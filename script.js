@@ -1,14 +1,19 @@
 function firstNonRepeatedChar(str) {
  // Write your code here
-	n=str.length;
-	for(let i=0; i<n;i++){
-		if (str.charAt(i) === str.charAt(i + 1)) {
-			i++; 
-		}else{
-			return str.charAt(i);
-		}
-	} 
-	return null; 
+	const charCount = {};
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charAt(i);
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  for (let i = 0; i < str.length; i++) {
+    if (charCount[str.charAt(i)] === 1) {
+      return str.charAt(i);
+    }
+  }
+
+  return null;
 }
 const input = prompt("Enter a string");
 alert(firstNonRepeatedChar(input)); 
